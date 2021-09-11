@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+          crossorigin="anonymous">
+    {% block head %}
+    {% load static %}
+    <link rel = "stylesheet" href="{% static 'style.css' %}" type="text/css">
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+    <h1 align="center">{{ name }}</h1>
+    Welcome! You can login here<br>
+    <br>
+    <div class="d-grid gap-2 d-md-block">
+        <a href="/signup/" class="btn btn-info" role="button">Sign Up</a>
+        <a href="/login/" class="btn btn-info" role="button">Login</a>
+    </div>
+    <br>
+    <form class="site-form" action='' method="post">
+    {% csrf_token %}
+    {{ form }}
+        <br>
+        <br>
+    <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-success" type="submit">Login</button>
+        <button class="btn btn-danger" type="reset">Clear</button>
+    </div>
+    </form>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

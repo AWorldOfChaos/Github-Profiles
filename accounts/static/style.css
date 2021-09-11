@@ -1,0 +1,16 @@
+body{
+    background: url(Bg.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    padding-bottom : 5%;
+}
+.mainbod {
+    align: left;
+    text-align: left;
+	padding-top: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 25px;
+}

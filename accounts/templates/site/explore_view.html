@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Site</title>
+{% load static %}
+<link rel = "stylesheet" href="{% static 'style.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+<h1>Site</h1>
+<div class="d-grid gap-2 d-md-block">
+        <a href="/explore/" class="btn btn-info" role="button">Explore</a>
+        <a href="/profile/" class="btn btn-info" role="button">Profile</a>
+        <a href="/logout/" class="btn btn-info" role="button">Logout</a>
+</div>
+
+<div class="mainbod">
+    <h2 align="left">User Profile</h2>
+    <h3 align="left">Username: {{ data.username }}</h3>
+    <p align="left">{{data.first_name}} {{data.last_name}} </p>
+    <p align="left">{{numfolls}} followers</p>
+    <h3>Repositories</h3>
+    <ul>
+    {% for repo in repos %}
+        <li>{{ repo.1 }}: {{ repo.0 }} stars
+            {% endfor %}
+    </ul>
+</div>
+{% endblock %}
