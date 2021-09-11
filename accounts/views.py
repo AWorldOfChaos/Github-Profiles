@@ -32,7 +32,7 @@ def signup(request):
             return redirect('/site/')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'name': name, 'form': form})
+    return render(request, 'registration/Signup.html', {'name': name, 'form': form})
 
 
 def login_view(request):
