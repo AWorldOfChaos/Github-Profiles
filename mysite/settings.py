@@ -27,9 +27,9 @@ with open("./key/key.txt", "r") as f:
     SECRET_KEY = f.readline()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'immense-island-49542.herokuapp.com']
 
 
 # Application definition
@@ -106,7 +106,7 @@ DATABASES = {
 f1.close()
 f2.close()
 f3.close()
-
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -154,4 +154,4 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
