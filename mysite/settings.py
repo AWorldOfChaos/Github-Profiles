@@ -92,21 +92,21 @@ f1 = open("./key/user.txt", "r")
 f2 = open("./key/passwd.txt", "r")
 f3 = open("./key/name.txt", "r")
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': f3.readline(),
-        'USER': f1.readline(),
-        'PASSWORD': f2.readline(),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': f3.readline(),
+#        'USER': f1.readline(),
+#        'PASSWORD': f2.readline(),
+#        'HOST': '127.0.0.1',
+#        'PORT': '5432',
+#    }
+#}
 
 f1.close()
 f2.close()
 f3.close()
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
