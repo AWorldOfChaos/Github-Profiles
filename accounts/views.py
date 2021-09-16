@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import Account, Profile, Repository
 import requests
 from requests.exceptions import HTTPError
-
+from django.utils import timezone
 
 # Create your views here.
 def home(request):
@@ -71,7 +71,8 @@ def profile_view(request):
         repos_stars.append(reps.stars)
     repos = sorted(zip(repos_stars, repos_name))
     repos.reverse()
-    return render(request, 'site/profile.html', {'data': data, 'numfolls': numfolls, 'repos': repos})
+    return render(request, 'site/profile.html',
+                  {'data': data, 'numfolls': numfolls, 'repos': repos, 'time': timezone.now()})
 
 
 @login_required(login_url="/login/")
