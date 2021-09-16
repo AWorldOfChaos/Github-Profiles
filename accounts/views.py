@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import Account, Profile, Repository
 import requests
 from requests.exceptions import HTTPError
-from django.utils import timezone
 
 
 # Create your views here.
@@ -86,7 +85,7 @@ def update_view(request):
 
     profile = data.profile_set.all()[0]
     profile.delete()
-    profile = Profile(account=data, num_of_followers=0, name=username, last_updated=timezone.now())
+    profile = Profile(account=data, num_of_followers=0, name=username)
     try:
         response = requests.get(link)
         response.raise_for_status()
