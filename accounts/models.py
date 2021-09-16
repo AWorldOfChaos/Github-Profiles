@@ -58,7 +58,7 @@ class Profile(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     num_of_followers = models.IntegerField(default=0)
     name = models.CharField(default='', max_length=100)
-    last_updated = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField()
 
     def __str__(self):
         return self.name

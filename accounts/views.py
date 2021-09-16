@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import Account, Profile, Repository
 import requests
 from requests.exceptions import HTTPError
+from django.utils import timezone
 
 
 # Create your views here.
@@ -27,7 +28,7 @@ def signup(request):
             last_name = form.cleaned_data.get('last_name')
             user = authenticate(username=username, password=password, first_name=first_name, last_name=last_name)
             login(request, user)
-            profile = Profile(account=user, num_of_followers=0, name=username)
+            profile = Profile(account=user, num_of_followers=0, name=username, last_updated=timezone.now())
             profile.save()
             return redirect('/site/')
     else:
@@ -85,7 +86,7 @@ def update_view(request):
 
     profile = data.profile_set.all()[0]
     profile.delete()
-    profile = Profile(account=data, num_of_followers=0, name=username)
+    profile = Profile(account=data, num_of_followers=0, name=username, last_updated=timezone.now())
     try:
         response = requests.get(link)
         response.raise_for_status()
