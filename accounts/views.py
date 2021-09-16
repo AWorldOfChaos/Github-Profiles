@@ -119,6 +119,7 @@ def explore(request):
 def explore_view(request, account):
     data = Account.objects.get(username=account)
     profile = data.profile_set.all()
+    time = profile[0].last_updated
     numfolls = profile[0].num_of_followers
     repos_name, repos_stars = [], []
     for reps in profile[0].repository_set.all():
@@ -126,4 +127,4 @@ def explore_view(request, account):
         repos_stars.append(reps.stars)
     repos = sorted(zip(repos_stars, repos_name))
     repos.reverse()
-    return render(request, 'site/explore_view.html', {'data': data, 'numfolls': numfolls, 'repos': repos})
+    return render(request, 'site/explore_view.html', {'data': data, 'numfolls': numfolls, 'repos': repos, 'time': time})
