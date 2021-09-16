@@ -28,7 +28,7 @@ def signup(request):
             last_name = form.cleaned_data.get('last_name')
             user = authenticate(username=username, password=password, first_name=first_name, last_name=last_name)
             login(request, user)
-            profile = Profile(account=user, num_of_followers=0, name=username, last_updated=timezone.now())
+            profile = Profile(account=user, num_of_followers=0, name=username)
             profile.save()
             return redirect('/site/')
     else:
