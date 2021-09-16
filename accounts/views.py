@@ -64,8 +64,6 @@ def logout_view(request):
 def profile_view(request):
     data = request.user
     profile = data.profile_set.all()
-    # time = profile[0].last_updated
-    time=0
     numfolls = profile[0].num_of_followers
     repos_name, repos_stars = [], []
     for reps in profile[0].repository_set.all():
@@ -73,7 +71,7 @@ def profile_view(request):
         repos_stars.append(reps.stars)
     repos = sorted(zip(repos_stars, repos_name))
     repos.reverse()
-    return render(request, 'site/profile.html', {'data': data, 'numfolls': numfolls, 'repos': repos, 'time': time})
+    return render(request, 'site/profile.html', {'data': data, 'numfolls': numfolls, 'repos': repos})
 
 
 @login_required(login_url="/login/")
