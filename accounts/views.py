@@ -65,7 +65,8 @@ def profile_view(request):
     data = request.user
     profile = data.profile_set.all()
     numfolls = profile[0].num_of_followers
-    print(profile[0].created)
+    time = profile[0].created
+    formatedDate = time.strftime("%d %b %Y : %H:%M:%S %p")
     repos_name, repos_stars = [], []
     for reps in profile[0].repository_set.all():
         repos_name.append(reps.name)
@@ -73,7 +74,7 @@ def profile_view(request):
     repos = sorted(zip(repos_stars, repos_name))
     repos.reverse()
     return render(request, 'site/profile.html',
-                  {'data': data, 'numfolls': numfolls, 'repos': repos, 'time': timezone.now()})
+                  {'data': data, 'numfolls': numfolls, 'repos': repos, 'time': formatedDate})
 
 
 @login_required(login_url="/login/")

@@ -31,7 +31,7 @@ with open("./key/key.txt", "r") as f:
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'immense-island-49542.herokuapp.com']
 
