@@ -65,6 +65,7 @@ def profile_view(request):
     data = request.user
     profile = data.profile_set.all()
     numfolls = profile[0].num_of_followers
+    print(profile[0].created)
     repos_name, repos_stars = [], []
     for reps in profile[0].repository_set.all():
         repos_name.append(reps.name)
